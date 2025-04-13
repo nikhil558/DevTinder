@@ -5,16 +5,16 @@ const app = express();
 
 app.use(express.json());
 
-// app.post("/signup", async (req, res) => {
-//   const user = new User(req.body);
+app.post("/signup", async (req, res) => {
+  const user = new User(req.body);
 
-//   try {
-//     await user.save();
-//     res.send("User successfully signup");
-//   } catch (err) {
-//     res.status(400).send("Error saving the user:" + err.message);
-//   }
-// });
+  try {
+    await user.save();
+    res.send("User successfully signup");
+  } catch (err) {
+    res.status(400).send("Error saving the user:" + err.message);
+  }
+});
 
 app.get("/user", async (req, res) => {
   try {
@@ -50,10 +50,16 @@ app.delete("/user", async (req, res) => {
 
 app.patch("/user", async (req, res) => {
   try {
-    const user = await User.findOneAndUpdate(req.body.filter, req.body.replace);
+    const user = await User.findOneAndUpdate(
+      req.body.filter,
+      req.body.replace,
+      {
+        runValidators: true,
+      }
+    );
     res.send("Update user data successfully");
   } catch (err) {
-    res.status(400).send("Something went wrong");
+    res.status(400).send("Update Failed: " + err.message);
   }
 });
 
