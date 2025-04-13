@@ -32,3 +32,24 @@
 - write a dummy auth middleware for admin
 - write a dummy auth middleware for All user routes, except login
 - Error handling using app.use("/", (err, req, res, next) = {})
+
+- create a free cluster on mangodb official website
+- install mangoose library
+- connect your application to database "connection url"/devTinder
+- call the connectDb function and connect to database before starting application on 3000
+- create a user schema & user model
+- Create Post /signup API to add data to database
+- Push some documents using API calls from postman
+- Error handling using try catch
+
+- JS object vs JSON (difference)
+- Add the express.json middleware to your app
+- make your signup API dynamic to receive data from the end user
+- User.findone with dublicate email id's, which object returned?
+- API - Get user by email 
+- API - Feed API - Get /feed - get all the users from the database
+- Create Delete API
+- API - Update a user 
+- Explore the Mongoose Documentation for model methods
+- What are options is a model.findOneAndUpdate method, explore more about it
+- API - update the user with email id
