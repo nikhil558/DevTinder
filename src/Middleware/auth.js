@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+const User = require("../Models/user");
+
 const adminAuth = (req, res, next) => {
   const token = "xyz";
   const isAuthorized = token === "xyz";
@@ -9,14 +12,21 @@ const adminAuth = (req, res, next) => {
   }
 };
 
-const userAuth = (req, res, next) => {
-  const token = "xyz";
-  const isAuthorized = token === "xyz";
-
-  if (isAuthorized) {
+const userAuth = async (req, res, next) => {
+  try {
+    const { token } = req.cookies;
+    if (!token) {
+      throw new Error("JWT token not found");
+    }
+    const decoded = jwt.verify(token, "Devtinder@123");
+    const user = await User.findById(decoded._id);
+    if (!user) {
+      throw new Error("Invalid User");
+    }
+    req.user = user;
     next();
-  } else {
-    res.status(400).send("Unauthorized");
+  } catch (err) {
+    res.status(400).send(err.message);
   }
 };
 

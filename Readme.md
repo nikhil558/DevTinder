@@ -61,4 +61,33 @@
 - Improve the DB schema - Put all appropiate validations on each field in schema
 - Add timestamps to the userSchema
 - ADD API Level validation on patch request & Signup post api
-- Add API validation for each field
+- Data Sanitizing - Add API validation for each field
+- Install validator
+- Explore validator library fun and use validator functions for password, email, url
+- Never trust req.body
+
+- Validate data is Signup API
+- Install bcrypt package
+- Create PasswordHash using bcrypt.hash & save the user in excrupted password
+- Create a login API
+- Compare passwords and throw errors if email or password is invalid
+
+- intall cookie-parse
+- just send a dummy cookie to user
+- create get /profile API and check if you get the cookie back
+- Install jsonwebtoken
+- In Login API, after email and password validation , create a jwt token and send it to user in cookie 
+- read the cookies inside your profile API and find the logged in user
+- userAuth Middleware
+- Add the userAuth middleware in profile API and a new sendConnectionRequest API
+- Set the expiry of JWT token and cookies to 7 days
+- Create userSchema method to getJWT()
+- Create UserSchema method to comparepassword(passwordInputByUser)
+
+- Explore tinder APIs
+- Create List of all API  you can think of in Dev Tinder
+- Group multiple routes under repective routers
+- Read documentation for express.router
+- Creates routes folder for managing auth, profile, request routers
+- create authRouter, profileRouter, requestRouter
+- import these routers in app.js
