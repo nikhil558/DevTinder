@@ -22,7 +22,7 @@ profileRouter.patch("/profile/edit", userAuth, async (req, res) => {
       logginUser[key] = req.body[key];
     });
     logginUser.save();
-    res.send("profile update successfully");
+    res.send(logginUser);
   } catch (err) {
     res.status(400).send(err.message);
   }

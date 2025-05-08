@@ -13,11 +13,12 @@ const validateSignUpData = (req) => {
 
 const validateUpdateProfileData = (req) => {
   const Update_Allowed_Fields = [
-    "photoUrl",
+    "firstName",
+    "lastName",
     "about",
-    "gender",
     "age",
-    "skills",
+    "gender",
+    "profileUrl",
   ];
 
   const isUpdateAllowed = Object.keys(req.body).every((field) =>
