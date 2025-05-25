@@ -2,6 +2,7 @@ const express = require("express");
 const connectDb = require("./Config/database");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+require("dotenv").config();
 
 const authRouter = require("./Routes/auth");
 const profileRouter = require("./Routes/profile");
@@ -22,7 +23,7 @@ app.use("/", userRouter);
 connectDb()
   .then(() => {
     console.log("database connected successfully");
-    app.listen(3000, () => {
+    app.listen(process.env.PORT, () => {
       console.log("server running sucessfully");
     });
   })
