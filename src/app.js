@@ -8,6 +8,7 @@ const authRouter = require("./Routes/auth");
 const profileRouter = require("./Routes/profile");
 const requestRouter = require("./Routes/request");
 const userRouter = require("./Routes/user");
+const paymentRouter = require("./Routes/payment");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use("/", authRouter);
 app.use("/", profileRouter);
 app.use("/", requestRouter);
 app.use("/", userRouter);
+app.use("/", paymentRouter);
 
 connectDb()
   .then(() => {
