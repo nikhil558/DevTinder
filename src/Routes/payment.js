@@ -6,7 +6,7 @@ const Payment = require("../Models/payment");
 const User = require("../Models/user");
 const { MEMBERSHIP_AMOUNT } = require("../utils/constants");
 
-paymentRouter.post("/payment/create/", userAuth, async (req, res) => {
+paymentRouter.post("/payment/create", userAuth, async (req, res) => {
   try {
     const { membershipType } = req.body;
     const { firstName, lastName } = req.user;
