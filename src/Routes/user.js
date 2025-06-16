@@ -13,9 +13,7 @@ userRouter.get("/user/requests/received", userAuth, async (req, res) => {
     const connectionRequests = await ConnectionRequest.find({
       toUserId: logginUser,
       status: "intrested",
-    }).populate("fromUserId", User_Safe_Data
-      
-    );
+    }).populate("fromUserId", User_Safe_Data);
 
     res.json({
       message: "Fetched data successfully",
@@ -81,4 +79,16 @@ userRouter.get("/feed", userAuth, async (req, res) => {
   }
 });
 
+userRouter.get("/user/:userId", async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+    res.send(user);
+  } catch (err) {
+    res.status(400).send(err.message);
+  }
+});
 module.exports = userRouter;
